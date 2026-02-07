@@ -1,0 +1,68 @@
+# Node
+node_modules/
+frontend/node_modules/
+**/node_modules/
+
+# Build outputs
+dist/
+build/
+frontend/build/
+frontend/dist/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Python
+__pycache__/
+*.py[cod]
+.python-version
+.pytest_cache/
+venv/
+.venv/
+.env
+python_backend/.env
+
+# Virtualenvs created by various tools
+ENV/
+env.bak/
+
+# Coverage
+coverage/
+htmlcov/
+.coverage
+.coverage.*
+
+# Test / tooling
+.tox/
+.pytest_cache/
+
+# IDEs and editors
+.vscode/
+.idea/
+*.sublime-workspace
+*.sublime-project
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Docker
+docker-compose.override.yml
+
+# Archives
+*.zip
+*.tar.gz
+*.rar
+
+# Certificates and keys
+*.pem
+*.key
+
+# Misc
+*.sqlite3
+/.cache/
+/.next/

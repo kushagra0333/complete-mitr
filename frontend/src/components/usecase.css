@@ -1,0 +1,133 @@
+.usecase-section {
+  background: radial-gradient(ellipse at top left, #20002c, #0e0e10);
+  padding: 80px 10%;
+  color: white;
+}
+
+.usecase-container {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* Header */
+.usecase-header {
+  text-align: center;
+  margin-bottom: 60px;
+  animation: fadeInUp 0.5s ease-out;
+}
+
+.usecase-subtitle {
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  color: #bb86fc;
+  letter-spacing: 1.2px;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+.usecase-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 12px;
+}
+
+.text-gradient {
+  background: linear-gradient(to right, #bb86fc, #e040fb);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.usecase-desc {
+  font-size: 1rem;
+  color: #ccc;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Grid Layout - Updated */
+.usecase-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Max 3 cards per row */
+  gap: 30px;
+}
+
+/* Card Styles */
+.usecase-card {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-top-left-radius: 0px;
+  border-top-right-radius: 70px;
+  border-bottom-left-radius: 70px;
+  border-bottom-right-radius: 0px;
+  padding: 24px;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 0 0 transparent;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  animation: fadeInUp 0.7s ease both;
+}
+
+.usecase-card:hover {
+  box-shadow: 0 0 18px rgba(224, 64, 251, 0.3);
+  transform: translateY(-6px);
+}
+
+.icon-wrapper {
+  font-size: 2.2rem;
+  color: #bb86fc;
+  margin-bottom: 16px;
+  transition: color 0.3s ease;
+}
+
+.usecase-card:hover .icon-wrapper {
+  color: #e040fb;
+}
+
+.usecase-heading {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: white;
+  margin-bottom: 10px;
+}
+
+.usecase-text {
+  font-size: 0.95rem;
+  color: #d0d0d0;
+  line-height: 1.5;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive - Updated */
+@media (max-width: 1024px) {
+  .usecase-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .usecase-grid {
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  .usecase-title {
+    font-size: 2rem;
+  }
+
+  .usecase-card {
+    padding: 20px;
+  }
+}

@@ -1,0 +1,144 @@
+.howitworks-section {
+  background: radial-gradient(ellipse at top left, #240032, #0e0e10);
+  color: white;
+  padding: 80px 10%;
+}
+
+.howitworks-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.howitworks-header {
+  margin-bottom: 60px;
+  animation: fadeInUp 0.5s ease-out;
+}
+
+.section-subtitle {
+  color: #bb86fc;
+  font-weight: 600;
+  letter-spacing: 1px;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.section-title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: white;
+  margin-bottom: 10px;
+}
+
+.text-gradient {
+  background: linear-gradient(to right, #bb86fc, #e040fb);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.section-desc {
+  color: #ccc;
+  font-size: 1rem;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+}
+
+.timeline-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: fadeInUp 0.6s ease both;
+}
+
+.icon-circle {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 2px solid #bb86fc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 10px 20px rgba(187, 134, 252, 0.3);
+  transition: transform 0.3s ease;
+  margin-bottom: 15px;
+}
+
+.icon-circle:hover {
+  transform: scale(1.1);
+}
+
+.step-icon {
+  font-size: 28px;
+  color: #bb86fc;
+  transition: color 0.3s ease;
+}
+
+.icon-circle:hover .step-icon {
+  color: #e040fb;
+}
+
+.step-title {
+  color: white;
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.step-desc {
+  font-size: 0.95rem;
+  color: #d0d0d0;
+  max-width: 600px;
+  line-height: 1.6;
+}
+
+.arrow-icon {
+  color: #e040fb;
+  margin-top: 30px;
+  font-size: 1.5rem;
+  animation: bounce 2s infinite;
+}
+
+/* Animations */
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(12px);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .section-title {
+    font-size: 2rem;
+  }
+
+  .icon-circle {
+    width: 60px;
+    height: 60px;
+  }
+
+  .step-icon {
+    font-size: 22px;
+  }
+}

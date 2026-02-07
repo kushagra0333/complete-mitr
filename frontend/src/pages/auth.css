@@ -1,0 +1,165 @@
+.auth-background {
+  background-color: #000;
+  position: relative;
+  overflow: hidden;
+}
+
+.auth-overlay-glow {
+  position: absolute;
+  top: -20%;
+  left: -20%;
+  width: 150%;
+  height: 150%;
+  background: radial-gradient(circle at 50% 50%, #350047, transparent 70%);
+  animation: pulseGlow 6s ease-in-out infinite;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.auth-container {
+  min-height: 100vh;
+  z-index: 2;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+}
+
+.auth-card {
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(187, 134, 252, 0.2);
+  border-radius: 16px;
+  padding: 2rem;
+  width: 100%;
+  max-width: 500px;
+  color: white;
+  position: relative;
+  z-index: 2;
+}
+
+.glass-effect {
+  backdrop-filter: blur(10px);
+}
+
+.auth-logo {
+  height: 50px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.auth-logo:hover {
+  transform: scale(1.1);
+}
+
+.glow-pulse {
+  animation: glowLogo 3s ease-in-out infinite alternate;
+}
+
+.auth-btn,
+.neon-btn {
+  background-color: #bb86fc;
+  border: none;
+  transition: all 0.3s ease;
+  font-weight: 600;
+  box-shadow: 0 0 10px #bb86fc60;
+}
+
+.auth-btn:hover,
+.neon-btn:hover {
+  background-color: #e040fb;
+  box-shadow: 0 0 15px #e040fb80, 0 0 30px #bb86fc50;
+}
+
+.auth-link {
+  color: #bb86fc;
+  transition: all 0.3s ease;
+  position: relative;
+  text-decoration: none;
+}
+
+.auth-link::after {
+  content: "";
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  bottom: -2px;
+  left: 0;
+  background-color: #e040fb;
+  transition: width 0.3s ease;
+}
+
+.auth-link:hover {
+  color: #e040fb;
+}
+
+.auth-link:hover::after {
+  width: 100%;
+}
+
+.text-gradient {
+  background: linear-gradient(to right, #bb86fc, #e040fb);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.form-label,
+.form-control {
+  color: white;
+  background-color: transparent;
+  border-color: #bb86fc;
+}
+
+.form-control::placeholder {
+  color: #ccc;
+}
+
+.form-control:focus {
+  border-color: #e040fb;
+  box-shadow: 0 0 0 0.2rem rgba(187, 134, 252, 0.25);
+}
+
+.error-message {
+  color: #ff4dda;
+  background: rgba(255, 77, 218, 0.1);
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+@keyframes glowLogo {
+  0% {
+    filter: drop-shadow(0 0 5px #bb86fc);
+  }
+  100% {
+    filter: drop-shadow(0 0 15px #e040fb);
+  }
+}
+
+@keyframes pulseGlow {
+  0% {
+    transform: scale(1);
+    opacity: 0.5;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0.5;
+  }
+}
+
+.animate-slide-up {
+  animation: slideUp 1s ease forwards;
+  transform: translateY(40px);
+  opacity: 0;
+}
+
+@keyframes slideUp {
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}

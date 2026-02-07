@@ -1,0 +1,11 @@
+flask
+python-dotenv
+pymongo
+pyjwt
+twilio
+requests
+resend
+marshmallow
+flask-cors
+gunicorn
+bcrypt

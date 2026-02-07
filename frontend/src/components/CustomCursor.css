@@ -1,0 +1,64 @@
+/* src/components/cursor.css */
+.custom-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 30px;
+  height: 30px;
+  background: radial-gradient(circle at 30% 30%, #e040fb, #bb86fc);
+  border-radius: 50%;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  z-index: 10000;
+  animation: fluidMotion 3s ease-in-out infinite;
+  box-shadow: 0 0 20px rgba(255, 0, 255, 0.4);
+  mix-blend-mode: difference;
+}
+
+.cursor-trail {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  background: rgba(224, 64, 251, 0.15);
+  backdrop-filter: blur(6px);
+  opacity: 0;
+  transition: all 0.3s ease;
+  z-index: 9999;
+}
+
+.cursor-trail.animate {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1.5);
+  animation: rippleFade 0.5s forwards;
+}
+
+@keyframes fluidMotion {
+  0% {
+    transform: translate(-50%, -50%) scale(1);
+    filter: blur(0.8px);
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.04);
+    filter: blur(1.5px);
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+    filter: blur(0.8px);
+  }
+}
+
+@keyframes rippleFade {
+  0% {
+    opacity: 0.5;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(2);
+  }
+}

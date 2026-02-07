@@ -1,0 +1,140 @@
+.about-section {
+  background: radial-gradient(ellipse at top left, #190026, #0e0e10);
+  padding: 80px 10%;
+  color: #ffffff;
+  position: relative;
+  overflow: hidden;
+}
+
+.about-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 60px;
+  flex-wrap: wrap;
+}
+
+/* Left Text Section */
+.about-left {
+  flex: 1 1 500px;
+}
+
+.about-tag {
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  color: #ff4dda;
+  letter-spacing: 1px;
+  font-weight: 500;
+  margin-bottom: 12px;
+  animation: fadeInUp 0.5s ease-out forwards;
+}
+
+.about-title {
+  font-size: 2.8rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 20px;
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+.highlight {
+  color: #e040fb;
+  text-shadow: 0 0 6px rgba(255, 77, 218, 0.5);
+}
+
+.about-text {
+  color: #e0e0e0;
+  font-size: 1.05rem;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+  animation: fadeInUp 0.7s ease-out forwards;
+}
+
+/* Button */
+.learn-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: linear-gradient(90deg, #ff4dda, #c748ff);
+  color: white;
+  font-weight: 600;
+  border: none;
+  padding: 12px 22px;
+  border-radius: 10px;
+  cursor: pointer;
+  box-shadow: 0 0 14px rgba(255, 77, 218, 0.6);
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.learn-btn:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 0 18px rgba(255, 77, 218, 0.8);
+}
+
+.btn-icon {
+  font-size: 1.2rem;
+}
+
+/* Right Image Section */
+.about-right {
+  flex: 1 1 400px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.about-img {
+  width: 100%;
+  max-width: 320px;
+  border-radius: 16px;
+  animation: floatImage 6s ease-in-out infinite;
+  box-shadow: 0 0 30px rgba(255, 77, 218, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  padding: 30px;
+}
+
+.about-img:hover {
+  transform: scale(1.03);
+  box-shadow: 0 0 40px rgba(255, 77, 218, 0.5);
+}
+
+/* Keyframe Animations */
+@keyframes floatImage {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .about-container {
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  .about-left, .about-right {
+    text-align: center;
+  }
+
+  .about-title {
+    font-size: 2.2rem;
+  }
+
+  .about-img {
+    max-width: 260px;
+  }
+}

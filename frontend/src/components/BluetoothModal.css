@@ -1,0 +1,222 @@
+/* Modal background with radial gradient similar to .device-details-background */
+.modal-content {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(187, 134, 252, 0.2);
+  border-radius: 16px;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 0 18px rgba(224, 64, 251, 0.3);
+  color: #d0d0d0;
+  position: relative;
+  z-index: 2;
+  animation: slideUp 1s ease forwards;
+}
+
+/* Modal overlay glow effect similar to .device-details-overlay-glow */
+.modal-backdrop {
+  background: radial-gradient(circle at 50% 50%, #350047, transparent 70%);
+  opacity: 0.5;
+  animation: pulseGlow 6s ease-in-out infinite;
+}
+
+/* Modal header */
+.modal-header {
+  border-bottom: 1px solid rgba(187, 134, 252, 0.2);
+  background: transparent;
+  padding: 1.5rem;
+}
+
+.modal-title {
+  display: flex;
+  align-items: center;
+  font-size: 1.5rem;
+  font-weight: 600;
+  background: linear-gradient(to right, #bb86fc, #e040fb);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Modal body */
+.modal-body {
+  padding: 1.5rem;
+}
+
+/* Neon button styles matching .neon-btn */
+.neon-btn {
+  background-color: #bb86fc;
+  border: none;
+  color: white;
+  font-weight: 600;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 10px rgba(187, 134, 252, 0.6);
+}
+
+.neon-btn:hover {
+  background-color: #e040fb;
+  box-shadow: 0 0 15px rgba(224, 64, 251, 0.8), 0 0 30px rgba(187, 134, 252, 0.5);
+  transform: translateY(-2px);
+}
+
+.neon-btn:disabled {
+  background-color: #666;
+  box-shadow: none;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+/* Form inputs */
+.form-control {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(187, 134, 252, 0.2);
+  color: #d0d0d0;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.form-control:focus {
+  border-color: #bb86fc;
+  box-shadow: 0 0 8px rgba(224, 64, 251, 0.3);
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+}
+
+.form-label {
+  color: #d0d0d0;
+  font-weight: 500;
+}
+
+/* List group for emergency contacts */
+.list-group-item {
+  background: transparent;
+  border: 1px solid rgba(187, 134, 252, 0.2);
+  color: #d0d0d0;
+  border-radius: 8px;
+  margin-bottom: 0.5rem;
+  transition: all 0.3s ease;
+}
+
+.list-group-item:hover {
+  background: rgba(187, 134, 252, 0.1);
+}
+
+/* Trigger word badges */
+.badge.bg-primary {
+  background: linear-gradient(to right, #bb86fc, #e040fb) !important;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 12px;
+  font-size: 0.9rem;
+  box-shadow: 0 0 8px rgba(224, 64, 251, 0.4);
+}
+
+/* Alert styles */
+.alert {
+  border-radius: 8px;
+  border: 1px solid rgba(187, 134, 252, 0.2);
+  background: rgba(255, 255, 255, 0.04);
+  color: #d0d0d0;
+}
+
+.alert-danger {
+  background: rgba(255, 77, 218, 0.1);
+  color: #ff4dda;
+}
+
+.alert-success {
+  background: rgba(40, 167, 69, 0.1);
+  color: #28a745;
+}
+
+.alert-warning {
+  background: rgba(255, 204, 0, 0.1);
+  color: #ffcc00;
+}
+
+/* Spinner */
+.spinner-border {
+  border-color: #bb86fc;
+  border-right-color: transparent;
+}
+
+/* Animations matching DeviceDetails.css */
+@keyframes slideUp {
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes pulseGlow {
+  0% {
+    transform: scale(1);
+    opacity: 0.5;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0.5;
+  }
+}
+
+/* Responsive design matching DeviceDetails.css */
+@media (max-width: 768px) {
+  .modal-content {
+    border-radius: 12px;
+    padding: 1rem;
+  }
+
+  .modal-title {
+    font-size: 1.3rem;
+  }
+
+  .neon-btn {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.9rem;
+  }
+
+  .form-control {
+    font-size: 0.9rem;
+  }
+
+  .list-group-item {
+    font-size: 0.9rem;
+  }
+
+  .badge.bg-primary {
+    font-size: 0.8rem;
+    padding: 0.4rem 0.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .modal-content {
+    border-radius: 10px;
+  }
+
+  .modal-title {
+    font-size: 1.1rem;
+  }
+
+  .neon-btn {
+    padding: 0.5rem 1rem;
+    font-size: 0.85rem;
+  }
+
+  .form-control {
+    font-size: 0.85rem;
+  }
+
+  .list-group-item {
+    font-size: 0.85rem;
+  }
+
+  .badge.bg-primary {
+    font-size: 0.75rem;
+    padding: 0.3rem 0.7rem;
+  }
+}

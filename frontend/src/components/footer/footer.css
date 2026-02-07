@@ -1,0 +1,197 @@
+.footer-hero {
+  background-color: #000000;
+  padding: 4rem 0 2rem;
+  background-image: radial-gradient(circle at top left, #2c003e 10%, transparent 20%),
+                    radial-gradient(circle at bottom right, #4a0c6b 10%, transparent 20%);
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  animation: fadeInUp 0.8s ease-in-out;
+}
+
+/* Glowing Animated Circles */
+.footer-hero::before,
+.footer-hero::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255,105,180,0.3) 0%, transparent 70%);
+  animation: float 10s infinite ease-in-out;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.footer-hero::before {
+  width: 200px;
+  height: 200px;
+  top: 15%;
+  left: 10%;
+  animation-delay: 0s;
+}
+
+.footer-hero::after {
+  width: 150px;
+  height: 150px;
+  bottom: 10%;
+  right: 15%;
+  animation-delay: 3s;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0) scale(1);
+    opacity: 0.6;
+  }
+  50% {
+    transform: translateY(-10px) scale(1.1);
+    opacity: 1;
+  }
+}
+
+.footer-content {
+  z-index: 1;
+  position: relative;
+}
+
+.footer-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.footer-logo-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.footer-hero-logo {
+  width: 55px;
+  height: 55px;
+  animation: glow 4s infinite alternate;
+}
+
+.footer-brand-title {
+  font-size: 1.6rem;
+  font-weight: bold;
+  color: #e040fb;
+  margin-top: 0.5rem;
+}
+
+.footer-brand-tagline {
+  font-size: 1rem;
+  color: #ccc;
+  text-align: center;
+  margin-top: 0.25rem;
+}
+
+.footer-heading {
+  font-size: 1.2rem;
+  color: #bb86fc;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  position: relative;
+}
+
+.footer-contact-item {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.95rem;
+  color: #ccc;
+}
+
+.footer-icon {
+  color: #e040fb;
+  font-size: 1rem;
+}
+
+.footer-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.footer-links a {
+  color: #ccc;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.95rem;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.footer-links a::before {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background: linear-gradient(to right, #bb86fc, #e040fb);
+  transition: width 0.3s ease;
+}
+
+.footer-links a:hover {
+  color: #fff;
+  transform: translateX(4px);
+}
+
+.footer-links a:hover::before {
+  width: 100%;
+}
+
+.footer-copy {
+  color: #999;
+  font-size: 0.85rem;
+  margin-top: 1rem;
+}
+
+/* Animation for Logo */
+@keyframes glow {
+  0% {
+    box-shadow: 0 0 5px #e040fb, 0 0 10px #bb86fc;
+  }
+  100% {
+    box-shadow: 0 0 15px #e040fb, 0 0 25px #bb86fc;
+  }
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .footer-section {
+    align-items: center;
+    text-align: center;
+  }
+
+  .footer-links {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+  }
+
+  .footer-brand-title {
+    font-size: 1.4rem;
+  }
+
+  .footer-brand-tagline {
+    font-size: 0.9rem;
+  }
+}

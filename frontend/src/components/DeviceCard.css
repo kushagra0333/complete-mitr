@@ -1,0 +1,59 @@
+.device-card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(187, 134, 252, 0.2);
+  border-radius: 16px;
+  padding: 1.5rem;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  backdrop-filter: blur(5px);
+  animation: slideUp 0.8s ease forwards;
+}
+
+.device-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(187, 134, 252, 0.2);
+  border-color: rgba(187, 134, 252, 0.4);
+}
+
+.device-card-content {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.device-card h3 {
+  margin: 0 0 1rem 0;
+  font-size: 1.3rem;
+}
+
+.device-details {
+  flex-grow: 1;
+}
+
+.device-details p {
+  margin: 0.5rem 0;
+  font-size: 0.95rem;
+}
+
+.device-details span {
+  color: #bb86fc;
+  font-weight: 600;
+}
+
+.view-details-button {
+  margin-top: 1rem;
+  background: rgba(187, 134, 252, 0.1);
+  color: #bb86fc;
+  border: 1px solid rgba(187, 134, 252, 0.3);
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  align-self: flex-start;
+}
+
+.view-details-button:hover {
+  background: rgba(187, 134, 252, 0.2);
+  border-color: rgba(187, 134, 252, 0.5);
+}
