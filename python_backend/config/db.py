@@ -1,3 +1,4 @@
+
 from pymongo import MongoClient
 from pymongo.errors import ConnectionFailure, OperationFailure
 from .env import Config
@@ -13,6 +14,8 @@ def get_db():
 def connect_db():
     global client, db
     try:
+        # Pymongo doesn't have strictQuery, it's specific to Mongoose schemas.
+        # We configure the client with the same timeouts and pool sizes.
         client = MongoClient(
             Config.MONGODB_URI,
             serverSelectionTimeoutMS=5000,
@@ -21,20 +24,18 @@ def connect_db():
             socketTimeoutMS=45000
         )
         
-        # Verify connection
+        # Verify connection immediately to catch errors early
         client.admin.command('ping')
         print('✓ MongoDB connected successfully')
         
-        # Determine the database name from the URI or use a default
-        # Assuming the URI contains the db name, pymongo handles it, 
-        # but explicit selection is safer if we want to assign to 'db'
+        # Select database
         db = client.get_database() 
         
     except (ConnectionFailure, OperationFailure) as err:
         print(f'MongoDB connection error: {err}', file=sys.stderr)
         sys.exit(1)
     except Exception as e:
-        print(f'An unexpected error occurred: {e}', file=sys.stderr)
+        print(f'MongoDB connection error: {e}', file=sys.stderr)
         sys.exit(1)
 
 def close_db():
@@ -42,3 +43,7 @@ def close_db():
     if client:
         client.close()
         print('MongoDB disconnected')
+
+# Note: Pymongo doesn't support event listeners for 'disconnected' or 'error' in the same way as Mongoose.
+# Connection monitoring would require implementing a custom Monitoring event listener if strictly needed.
+
