@@ -1,107 +1,186 @@
-# MITR SOS App
+# 🚨 MITR SOS – AI-Powered Emergency Response System
 
-A full-stack application with a React frontend and a Python (Flask) backend, designed for emergency SOS and community safety features.
+![MITR System Architecture](./structure.jpeg)
 
-## Project Structure
+**MITR SOS** is a full-stack, hardware-integrated emergency alert system that detects distress (via AI or manual trigger) and instantly notifies trusted contacts with a live GPS tracking link.
 
-- **frontend/**: React application (created with Create React App).
-- **python_backend/**: Flask API server with MongoDB connection.
+Unlike typical apps, MITR operates **independently of a smartphone**, using an embedded device with GSM/GPS capabilities and a real-time web dashboard for monitoring.
 
-## Getting Started
+---
 
-Follow these instructions to run the application locally on your machine.
+## 🔥 Key Highlights
 
-### Prerequisites
+* 🧠 **On-device AI detection (TinyML)** for scream/distress recognition
+* 📡 **Fully independent hardware system** (no phone required)
+* 📍 **Real-time GPS tracking** with shareable live link
+* 📲 **Instant SMS alerts** to emergency contacts
+* 🌐 **Live tracking dashboard** (React-based web app)
+* 🔄 **Offline recovery with buffered sync**
+* 🔐 **Secure reset & access control system**
 
-- **Node.js** (v16 or higher) and **npm**
-- **Python** (v3.8 or higher) and **pip**
-- **MongoDB** (running locally or a cloud Atlas URI)
+---
 
-### 1. Backend Setup (Python)
+## 🏗️ System Architecture
 
-Navigate to the backend directory:
+MITR consists of **three tightly integrated layers**:
 
-```bash
-cd python_backend
+### 1. 🔌 Embedded System (ESP32 + A7670C)
+
+* AI-based scream detection using **TensorFlow Lite Micro**
+* Manual SOS trigger button
+* GSM module for SMS + HTTP communication
+* GPS module for real-time location
+* Bluetooth for configuration (contacts, sensitivity)
+* Offline storage for network failure scenarios
+
+---
+
+### 2. ⚙️ Backend (Flask + MongoDB)
+
+* REST API for device communication and tracking
+* Stores GPS logs, device states, and triggers
+* Authentication & secure device reset system
+* Handles offline data sync and recovery
+
+---
+
+### 3. 🌍 Frontend (React + Vite + Tailwind)
+
+* Live tracking dashboard (`/track?id=DEVICE_ID`)
+* Admin reset panel for device control
+* Historical SOS logs with timestamps
+
+---
+
+## 📂 Project Structure
+
+```
+MITR-SOS/
+├── embedded/              # ESP32 firmware (TinyML + GSM + GPS)
+│   └── MitrSOSDevice.ino
+│
+├── backend/              # Flask backend (API + DB)
+│   ├── controllers/
+│   ├── models/
+│   ├── routes/
+│   ├── middleware/
+│   └── app.py
+│
+├── frontend/             # React app (Vite + Tailwind)
+│   ├── src/
+│   └── public/
+│
+├── structure.jpeg        # Architecture diagram
+└── README.md
 ```
 
-Create a virtual environment:
+---
+
+## ⚙️ Tech Stack
+
+| Layer          | Technologies                                  |
+| -------------- | --------------------------------------------- |
+| **Hardware**   | ESP32-S3, A7670C (GSM + GPS), Arduino         |
+| **AI/ML**      | TensorFlow Lite for Microcontrollers (TinyML) |
+| **Backend**    | Python, Flask, MongoDB                        |
+| **Frontend**   | React.js, Vite, TailwindCSS                   |
+| **Deployment** | Render (API), Vercel (Frontend)               |
+
+---
+
+## 🔄 End-to-End Workflow
+
+1. 🚨 Distress detected (AI scream detection or button press)
+2. 📍 Device captures GPS coordinates
+3. 🌐 Data sent to backend API
+4. 📩 SMS with tracking link sent to emergency contacts
+5. 🗺️ Contacts view real-time location via web dashboard
+6. 🔐 System remains locked until authorized reset
+
+---
+
+## 🔁 Offline Resilience
+
+* 📦 Stores GPS data locally when network is unavailable
+* 🔄 Automatically syncs all logs when connectivity is restored
+* ⏱️ Maintains chronological event order
+
+---
+
+## 🔐 Security & Privacy
+
+* Contacts stored **locally on device only**
+* Secure API communication with authentication keys
+* No third-party tracking or data sharing
+* Access-controlled reset functionality
+
+---
+
+## 🚀 Live Deployment
+
+* 🌍 **Frontend (Live Tracking)**: [https://mitr-beta.vercel.app/](https://mitr-beta.vercel.app/)
+* ⚙️ **Backend API**: [https://mitr-new-api.onrender.com/](https://mitr-new-api.onrender.com/)
+
+---
+
+## 🧪 Local Setup
+
+### 🔧 Backend (Flask)
 
 ```bash
-# Windows
+cd backend
 python -m venv venv
-# Linux/macOS
-python3 -m venv venv
-```
+source venv/bin/activate   # Linux/macOS
+# OR venv\Scripts\activate (Windows)
 
-Activate the virtual environment:
-
-```bash
-# Windows
-.\venv\Scripts\activate
-# Linux/macOS
-source venv/bin/activate
-```
-
-Install dependencies:
-
-```bash
 pip install -r requirements.txt
-```
-
-**Configuration:**
-Create a `.env` file in the `python_backend/` directory (you can copy `.env.example` if it exists) and add your environment variables:
-
-```ini
-PORT=5000
-MONGO_URI=your_mongodb_connection_string
-JWT_SECRET=your_jwt_secret
-# Add other keys (Twilio, etc.) as needed
-```
-
-Run the server:
-
-```bash
 python app.py
 ```
 
-The backend will start at `http://localhost:5000`.
+Create a `.env` file:
 
-### 2. Frontend Setup (React)
+```ini
+PORT=5000
+MONGO_URI=your_mongodb_uri
+JWT_SECRET=your_secret
+```
 
-Open a new terminal and navigate to the frontend directory:
+---
+
+### 🌐 Frontend (React)
 
 ```bash
 cd frontend
-```
-
-Install dependencies:
-
-```bash
 npm install
+npm run dev
 ```
 
-Start the development server:
+---
 
-```bash
-npm start
-```
-
-The frontend will open at `http://localhost:3000`.
-
-## API Endpoints
-
-The backend exposes several API blueprints:
-
-- `/api/auth` - Authentication routes
-- `/api/user` - User management
-- `/api/device` - Device management
-- `/api/sessions` - Session management
-
-## Docker
-
-Alternatively, you can run the entire stack using Docker:
+### 🐳 Docker (Optional)
 
 ```bash
 docker-compose up --build
 ```
+
+---
+
+## 🧩 Future Enhancements
+
+* 🎙️ Voice keyword detection
+* 🧠 Emotion recognition from audio
+* 🔋 Battery monitoring via Bluetooth
+* 📱 Dedicated Android app
+* 🛰️ Satellite fallback communication
+
+---
+
+## 💡 Why MITR Stands Out
+
+* Combines **IoT + AI + Full-stack development**
+* Works in **real-world emergency conditions (offline support)**
+* Designed for **safety-critical use cases**
+* Demonstrates **system design + hardware-software integration**
+
+* Add **GitHub badges + visuals**
+* Or rewrite it specifically for **recruiters (impact-focused version)**
